@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { connect } from "react-redux";
+import updateMovies from "./store/actions/updateMovies";
+import "./App.css";
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>REDUX MOVIELIST</h2>
+      <hr />
+      <span style={{ color: "green" }}>YOUR CURRENT MOVIE IS</span>
+      {props.movies.name}
+      <button onClick={props.updateMovies}>SELECT NEW MOVIE</button>
     </div>
   );
 }
 
-export default App;
+const MapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+  };
+};
+const MapDispatchToProps = (dispatch) => {
+  return {
+    updateMovies: () => dispatch(updateMovies),
+  };
+};
+export default connect(MapStateToProps, MapDispatchToProps)(App);

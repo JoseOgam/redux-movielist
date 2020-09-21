@@ -8,7 +8,7 @@ function App(props) {
     <div className="App">
       <h2>REDUX MOVIELIST</h2>
       <hr />
-      <span style={{ color: "green" }}>YOUR CURRENT MOVIE IS</span>
+      <span style={{ color: "green" }}>YOUR CURRENT MOVIE IS: </span>
       {props.movies.name}
       <button onClick={props.updateMovies}>SELECT NEW MOVIE</button>
     </div>
